@@ -1,0 +1,16 @@
+*checkpoint.ipynb
+*.Rhistory
+
+*.pyc
+
+*Untitled
+*.csv
+
+*/.ipynb_checkpoints/
+
+
+*__pycache
+
+*logs
+
+*nowe_foto
