@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>sign language translator</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body style="background: rgb(140, 172, 233);">
+  <div class="login-wrapper", style= "display: flex;align-items: center;justify-content: center;
+  width: 100vw;height: 100vh;">
+    <div class="login">
+      <h1>Translate your photo with sign letter</h1>
+
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict')}}"method="post" enctype="multipart/form-data">
+        
+          <input type="file" name="file" accept="image/*" required/>  
+          <!-- <input type = "submit" value="Upload">-->
+            <button type="submit" class="btn btn-primary btn-block btn-large">Check</button>
+        </form>
+
+      <br>
+      <br>
+      {{ prediction_text }}
+
+      <p>App is used to able people translate letter from American Sign Language letters to latin letters
+     </p>
+
+    </div>
+  </div>
+
+</body>
+</html>
