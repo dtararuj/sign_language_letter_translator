@@ -14,7 +14,9 @@ import pandas as pd
 import os
 
 
-path = 'C:/Users/Dawid/Desktop/kurs/jdszr4-animalsi/gesty'
+os.getcwd()
+
+path = os.path.dirname(os.getcwd())
 
 train = pd.read_csv(os.path.join(path,"dane/sign_mnist_train.csv"))
 

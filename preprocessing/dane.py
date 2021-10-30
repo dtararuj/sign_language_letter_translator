@@ -10,12 +10,9 @@ import datetime
 from sklearn.svm import SVC
 from sklearn.metrics import confusion_matrix
 import pandas as pd
-#import tensorflow_datasets as tfds
+import os
 
-
-
-
-get_ipython().run_line_magic('cd', '"C:\\Users\\Dawid\\Desktop\\kurs\\jdszr4-animalsi\\gesty"')
+os.path.dirname(os.getcwd())
 train = pd.read_csv("dane\sign_mnist_train.csv")
 
 test = pd.read_csv("dane\sign_mnist_test.csv")
@@ -31,7 +28,7 @@ X_test = X_test.to_numpy()
 Y_test= Y_test.to_numpy()
 
 
-#zmiana kształtu naszego zbioru
+#zmiana ksztaltu naszego zbioru
 X_train = X_train.reshape(-1,28,28)
 X_test = X_test.reshape(-1,28,28)
 
