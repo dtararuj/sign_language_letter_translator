@@ -8,10 +8,10 @@ from werkzeug.utils import secure_filename
 
 
 #define our paths
-path_parent =os.path.dirname(os.getcwd())
+path_parent =os.getcwd()
 from preprocessing.dane import *
 model_path = os.path.join(path_parent,'model_dt/model_dt.h5')
-UPLOAD_FOLDER = os.path.join(path_parent, 'app/static/images')
+UPLOAD_FOLDER = os.path.join(path_parent, 'static/images')
 
 # load our defined model
 model = models.load_model(model_path)
