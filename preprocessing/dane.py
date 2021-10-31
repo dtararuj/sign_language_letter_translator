@@ -13,9 +13,9 @@ import pandas as pd
 import os
 
 os.path.dirname(os.getcwd())
-train = pd.read_csv("dane\sign_mnist_train.csv")
+train = pd.read_csv("dane/sign_mnist_train.csv")
 
-test = pd.read_csv("dane\sign_mnist_test.csv")
+test = pd.read_csv("dane/sign_mnist_test.csv")
 
 Y_train = train.iloc[:,0]
 X_train = train.iloc[:,1:]
