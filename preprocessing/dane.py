@@ -1,14 +1,7 @@
 
-import tensorflow as tf
 import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.metrics import classification_report
 import cv2
 from sklearn.preprocessing import OneHotEncoder
-from tensorflow.keras import layers
-import datetime
-from sklearn.svm import SVC
-from sklearn.metrics import confusion_matrix
 import pandas as pd
 import os
 
