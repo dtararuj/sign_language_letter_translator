@@ -90,7 +90,7 @@ def predict():
     prediction  = model.predict(resized1).argmax(axis = 1)
 
     output = slownik[prediction[0]]
-    return render_template('index.html', prediction_text="This letter is {}".format(output))
+    return render_template('index.html', prediction_text="This letter is {}".format(output), user_image = file_path)
 
 if __name__ == "__main__":
     app.run(debug=False)
