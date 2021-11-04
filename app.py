@@ -48,7 +48,7 @@ model = models.load_model(model_path)
 # Instatiate flask app  
 app = Flask(__name__, template_folder='./templates')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
+app.secret_key = "secret key"
 
 # render out template
 @app.route('/',methods=['GET', 'POST'])
