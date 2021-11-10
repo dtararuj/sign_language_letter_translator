@@ -2,7 +2,7 @@ import numpy as np
 from tensorflow.keras import models
 import cv2
 import os
-from flask import Flask, render_template, request, redirect, flash
+from flask import Flask, render_template, request, redirect, flash, url_for, Response
 from werkzeug.utils import secure_filename
 
 
@@ -67,30 +67,33 @@ def upload_file():
 # create our predictions 
 @app.route('/predict', methods = ['GET','POST'])
 def predict():
-    # here we'r loading uploaded photo from temporary folder
-    file1 = request.files['file']
-    filename1 = file1.filename
-    file_path = (os.path.join(app.config['UPLOAD_FOLDER'], filename1))
-    file1.save(file_path)
-    
-    new_photo =cv2.imread(file_path,cv2.IMREAD_UNCHANGED)
+    if request.method == 'POST':
+        # here we'r loading uploaded photo from temporary folder
+        file1 = request.files['file']
+        filename1 = file1.filename
+        file_path = (os.path.join(app.config['UPLOAD_FOLDER'], filename1))
+        file1.save(file_path)
+        
+        new_photo =cv2.imread(file_path,cv2.IMREAD_UNCHANGED)
 
-    # due to model definition we need to save photo in grayscale
-    gray = cv2.cvtColor(new_photo, cv2.COLOR_BGR2GRAY)
+        # due to model definition we need to save photo in grayscale
+        gray = cv2.cvtColor(new_photo, cv2.COLOR_BGR2GRAY)
 
-    # our photo need to be scaled to format 28 x 28
-    dim = (28, 28)
+        # our photo need to be scaled to format 28 x 28
+        dim = (28, 28)
 
-    resized = cv2.resize(gray, dim, interpolation = cv2.INTER_AREA)
+        resized = cv2.resize(gray, dim, interpolation = cv2.INTER_AREA)
 
-    # last step is to resize your photo to specific shape, which is specific for model input layer
-    resized1 = resized.reshape(-1,28,28,1)
+        # last step is to resize your photo to specific shape, which is specific for model input layer
+        resized1 = resized.reshape(-1,28,28,1)
 
-    # prediction our uploaded photo
-    prediction  = model.predict(resized1).argmax(axis = 1)
+        # prediction our uploaded photo
+        prediction  = model.predict(resized1).argmax(axis = 1)
 
-    output = slownik[prediction[0]]
-    return render_template('index.html', prediction_text="This letter is {}".format(output), user_image = file_path)
+        output = slownik[prediction[0]]
+        return render_template('index.html', prediction_text="This letter is {}".format(output),user_image = os.path.join("static\images",filename1))
+    return render_template('index.html')
+
 
 if __name__ == "__main__":
     app.run(debug=False)

@@ -1,35 +1,41 @@
 <!DOCTYPE html>
-<html >
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>sign language translator</title>
+   <title>Sign Language Translator</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="description" content="Translate your photo with sign letter">
 
-  
+  <link rel="stylesheet" href="./style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body style="background: rgb(140, 172, 233);">
-  <div class="login-wrapper", style= "display: flex;align-items: center;justify-content: center;
-  width: 100vw;height: 100vh;">
+<body>
+  <div class="login-wrapper">
     <div class="login">
       <h1>Translate your photo with sign letter</h1>
+      <p> App is used to able people translate letter from American Sign Language letters to latin letters </p>
 
         <!-- Main Input For Receiving Query to our ML -->
-        <form action="{{ url_for('predict')}}"method="post" enctype="multipart/form-data">
-        
-          <input type="file" name="file" accept="image/*" required/>  
+        <form action="/predict" method="post" enctype="multipart/form-data">
+
+
+          <label for="file" class="upload-label">
+            <i class="fa fa-cloud-upload"></i> Upload file
+          </label>
+          <input type="file" id="file" name="file" accept="image/*" required />
           <!-- <input type = "submit" value="Upload">-->
-            <button type="submit" class="btn btn-primary btn-block btn-large">Check</button>
+          <button type="submit" class="btn btn-primary btn-block btn-large">Check</button>
         </form>
 
       <br>
       <br>
-      {{ prediction_text }}
+      {{ prediction_text }}   
+      <img class="image" src="{{ user_image }}"> 
 
-      <img src="{{ user_image }}" alt="User Image" class="img-thumbnail">
 
-      <p>App is used to able people translate letter from American Sign Language letters to latin letters
-     </p>
-
+    </div>
     </div>
   </div>
 
