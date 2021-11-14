@@ -16,7 +16,7 @@ Model has been trained for 20 epochs.
 
 Results were very impresive, model had accuracy 98% (classes were ballanced). 
 When we look at the confusion matrix we can see, than the worst accuracy in certain class was 91% 
-![results](presentation/image2.png)
+![results](presentation/image2.PNG)
 
 Used dataset comes from [kaggle](https://www.kaggle.com/datamunge/sign-language-mnist?select=amer_sign2.png) and presents the American Sign Language letter database of hand gestures represent a multi-class problem with 24 classes of letters (excluding J and Z which require motion). All letters are presented below:
 ![letters](presentation/image1.png)
@@ -26,5 +26,5 @@ Each record presents one 28x28 pixel photo on gray scale and his label.
 
 ---
 App has been deployed on Heroku server.
-![app](presentation/image3.png)
+![app](presentation/image4.PNG)
 
