@@ -27,6 +27,11 @@ body::before {
     height: 100vh;
 }
 
+.image{
+    align-items: center;
+}
+
+
 form{
     display: flex;
     justify-content: space-between;
